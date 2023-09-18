@@ -35,6 +35,9 @@ fetch(apiUrl)
 boutonAfficher.addEventListener("click", function () {
   const selectedPokemonIndex = parseInt(select.value); // Récupérez l'indice du Pokémon sélectionné
 
+
+  
+
   if (!isNaN(selectedPokemonIndex)) {
     // Effectuer une nouvelle requête API pour obtenir les détails du Pokémon sélectionné
     fetch(apiUrl + selectedPokemonIndex)
@@ -56,18 +59,15 @@ boutonAfficher.addEventListener("click", function () {
               .join(", ")}</p>`
             : "<p>Aucune évolution.</p>"
           }
-            <button type="submit" name="caract">Caratéristique</button>
+            <button type="submit" name="caract"><a href="./carateristique.html" target="_blank">Caractéristique</a></button>
         `;
-        document.querySelector('button type="submit"', () => {
-          boutonDetail.addEventListener('click', function (event) {
-            event.preventDefault()
-            let para = new URLSearchParams();
-            para.append("pokemon", selectedPokemonIndex);
-            console.log(para.get("pokemon"));
-            location.href = "http://localhost/Pokemon/details.html?" + para.toString("pokemon");
-          })
 
-        })
+        boutonDetail.addEventListener("click", function () {
+          const selectedPokemonData = selectedPokemonData;
+          const queryString = `caracteristique.html?pokemonData=${encodeURIComponent(JSON.stringify(selectedPokemonData))}`;
+          window.location.href = queryString;
+        });
+        
 
       })
       .catch((error) => {
@@ -83,7 +83,8 @@ boutonAfficher.addEventListener("click", function () {
 // Étape 5 : Ajouter un gestionnaire d'événements "submit" au formulaire (pour gérer la soumission)
 form.addEventListener("submit", function (event) {
   event.preventDefault(); // Empêchez la soumission du formulaire par défaut
-  // Effectuez des actions supplémentaires si nécessaire lors de la soumission du formulaire
-  // ...
 });
+
+
+
 

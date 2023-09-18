@@ -1,9 +1,9 @@
-let para = new URLSearchParams(window.location.search);
-let pass = para.get("pokemon");
-console.log("je suis ", pass);
-fetch(`https://pokebuildapi.fr/api/v1/pokemon/${pass}`)
-.then((res) => res.json())
-    .then((data) => {
-        console.log(data.name)
-       
-    });
+// Dans fetch2.js sur la page caracteristique.html
+const params = new URLSearchParams(window.location.search);
+const pokemonDataParam = params.get("pokemonData");
+
+if (pokemonDataParam) {
+  const selectedPokemonData = JSON.parse(decodeURIComponent(pokemonDataParam));
+
+  // Vous pouvez maintenant utiliser selectedPokemonData pour afficher les données du Pokémon sur cette page
+}
