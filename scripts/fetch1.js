@@ -1,10 +1,7 @@
 // Étape 1 : Définir l'URL de l'API Pokémon
 const apiUrl = "https://pokebuildapi.fr/api/v1/pokemon/";
 
-
 let selectedPokemonData = null; // Variable pour stocker les données du Pokémon sélectionné
-
-
 
 // Étape 2 : Sélectionner les éléments HTML
 const form = document.querySelector("form"); // Sélectionnez le formulaire
@@ -12,7 +9,7 @@ const resultatElement = document.querySelector("#resultat"); // Sélectionnez la
 const select = document.getElementById("selectCreation"); // Sélectionnez le menu déroulant
 let boutonAfficher = null;
 boutonAfficher = document.querySelector('button[name="pokemon"]'); // Sélectionnez le bouton "Afficher"
-const boutonDetail = document.querySelector('button[name="carac"]'); // Selectionenr le bouton créer en JS
+// const boutonDetail = document.querySelector('button[name="carac"]'); // Selectionenr le bouton créer en JS
 
 // Étape 3 : Effectuer une requête API pour obtenir la liste complète des Pokémon
 fetch(apiUrl)
@@ -35,20 +32,16 @@ fetch(apiUrl)
 boutonAfficher.addEventListener("click", function () {
   const selectedPokemonIndex = parseInt(select.value); // Récupérez l'indice du Pokémon sélectionné
 
-
-  
-
   if (!isNaN(selectedPokemonIndex)) {
+    console.log("TOTO");
+    localStorage.setItem("selection", selectedPokemonIndex);
     // Effectuer une nouvelle requête API pour obtenir les détails du Pokémon sélectionné
     fetch(apiUrl + selectedPokemonIndex)
       .then((response) => response.json()) // Convertir la réponse en JSON
       .then((selectedPokemon) => {
-        // Stocker les informations du Pokémon sélectionné dans la variable selectedPokemonData
-        selectedPokemonData = selectedPokemon;
-        // Afficher les informations du Pokémon sélectionné dans la balise résultat
         resultatElement.innerHTML = `
           <h2>Voici les informations de ${selectedPokemon.name}</h2>
-          <img src="${selectedPokemon.image}">
+          <img src="${selectedPokemon.image}" alt="Image Pokemon">
           <p>Élément : ${selectedPokemon.apiTypes
             .map((type) => type.name)
             .join(", ")}</p>
@@ -59,16 +52,8 @@ boutonAfficher.addEventListener("click", function () {
               .join(", ")}</p>`
             : "<p>Aucune évolution.</p>"
           }
-            <button type="submit" name="caract"><a href="./carateristique.html" target="_blank">Caractéristique</a></button>
+            <button type="submit" name="caract"><a href="./caracteristique.html">Caractéristique</a></button>
         `;
-
-        boutonDetail.addEventListener("click", function () {
-          const selectedPokemonData = selectedPokemonData;
-          const queryString = `caracteristique.html?pokemonData=${encodeURIComponent(JSON.stringify(selectedPokemonData))}`;
-          window.location.href = queryString;
-        });
-        
-
       })
       .catch((error) => {
         console.error("Erreur lors de la requête API : " + error); // Gérez les erreurs
@@ -76,15 +61,9 @@ boutonAfficher.addEventListener("click", function () {
   } else {
     console.error("Sélection de Pokémon invalide.");
   }
-
-
 });
 
 // Étape 5 : Ajouter un gestionnaire d'événements "submit" au formulaire (pour gérer la soumission)
 form.addEventListener("submit", function (event) {
   event.preventDefault(); // Empêchez la soumission du formulaire par défaut
 });
-
-
-
-
