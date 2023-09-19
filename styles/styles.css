@@ -12,14 +12,14 @@ main{
     flex-direction: column;
     justify-content: center;
     margin: auto;
-    width: 40%;
-    height: 100vh;
-
+    margin-top: 30px;
+    margin-bottom: 30px;
+    width: 80%;
 }
 
 h2{
     margin-top: 15px;
-    font-size: 3em;
+    font-size: 1.5em;
     text-align: center;
     font-family: 'Bangers', cursive;
 }
@@ -30,8 +30,8 @@ a{
 }
 
 article{
-    background-color: white;
-    opacity: 0.8;
+    background-color: rgb(255,255,255,0.8);
+    opacity: 1;
     padding: 15px;
     border-radius: 15px;
 }
@@ -57,19 +57,33 @@ select{
 
 p{
     text-align: center;
-    margin-top: 50px;
+    margin-top: 15px;
     margin-bottom: 15px;
 }
 button{
     font-family: 'Bangers', cursive;
     padding: 15px;
     font-size: 25px;
-    border: 1px solid;
+    border-radius: 10px;
+    background-color: ;
     margin-top: 35px;
 }
+
+
 
 img{
     width: 30%;
 }
 
+
+@media only screen and (max-width: 600px) {
+    h1{
+        font-size: 3em;
+    }
+
+    img{
+        width: 80%;
+    }
+
+}
 
