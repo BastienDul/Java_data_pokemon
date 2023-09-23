@@ -8,11 +8,11 @@ fetch("https://pokebuildapi.fr/api/v1/pokemon/" + selection)
     .then(selectedPokemon => {
       resultatElement.innerHTML = `
       <h2>Caractéristique de ${selectedPokemon.name}</h2>
-      <p>Point de vie : ${selectedPokemon.stats.attack}</p>
-      <p>Point de vie : ${selectedPokemon.stats.defense}</p>
-      <p>Point de vie : ${selectedPokemon.stats.special_attack}</p>
-      <p>Point de vie : ${selectedPokemon.stats.special_defense}</p>
-      <p>Point de vie : ${selectedPokemon.stats.speed}</p>
+      <p>Attaque : ${selectedPokemon.stats.attack}</p>
+      <p>Défense : ${selectedPokemon.stats.defense}</p>
+      <p>Attaque spéciale : ${selectedPokemon.stats.special_attack}</p>
+      <p>Défense spéciale : ${selectedPokemon.stats.special_defense}</p>
+      <p>Vitesse : ${selectedPokemon.stats.speed}</p>
         <button type="submit" name="caract"><a href="./index.html">Retour à la selection des pokémons</a></button>
     `;
 
